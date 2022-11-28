@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import './category-item.styles.scss';
 
 const CategoryItem = ({ category }) => {
@@ -5,7 +6,7 @@ const CategoryItem = ({ category }) => {
 
   return (
     <div className="category-container">
-      <div 
+      <div
         className="background-image"
         style={{
           backgroundImage: `url(${imageUrl})`
@@ -17,6 +18,10 @@ const CategoryItem = ({ category }) => {
       </div>
     </div>
   );
-}
+};
+
+CategoryItem.propTypes = {
+  category: PropTypes.object
+};
 
 export default CategoryItem;
