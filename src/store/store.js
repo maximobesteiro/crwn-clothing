@@ -1,5 +1,9 @@
 import { compose, createStore, applyMiddleware } from 'redux';
 import { logger } from 'redux-logger';
+
+// Our own logger middleware in case we prefer to use this instead of redux-logger
+// import { loggerMiddleware } from './middleware/logger';
+
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { rootReducer } from './root-reducer';
