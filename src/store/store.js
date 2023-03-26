@@ -4,6 +4,7 @@ import { logger } from 'redux-logger';
 // Our own logger middleware in case we prefer to use this instead of redux-logger
 // import { loggerMiddleware } from './middleware/logger';
 
+import thunk from 'redux-thunk';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { rootReducer } from './root-reducer';
@@ -11,13 +12,13 @@ import { rootReducer } from './root-reducer';
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ['user']
+  whitelist: ['cart']
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 // eslint-disable-next-line no-undef
-const middlewares = [process.env.NODE_ENV !== 'production' && logger].filter(Boolean);
+const middlewares = [process.env.NODE_ENV !== 'production' && logger, thunk].filter(Boolean);
 const composeEnhancer =
   // eslint-disable-next-line no-undef
   (process.env.NODE_ENV !== 'production' &&
